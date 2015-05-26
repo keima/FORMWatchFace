@@ -56,7 +56,9 @@ import net.nurik.roman.formwatchface.common.MathUtil;
 import net.nurik.roman.formwatchface.common.config.ConfigHelper;
 import net.nurik.roman.formwatchface.common.config.Themes;
 
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.Locale;
 
 import static net.nurik.roman.formwatchface.LogUtil.LOGD;
 import static net.nurik.roman.formwatchface.common.FormClockRenderer.ClockPaints;
@@ -521,7 +523,8 @@ public class FormWatchFace extends CanvasWatchFaceService {
         }
 
         private void updateDateStr() {
-            mDateStr = DateFormat.format("EEE d", Calendar.getInstance()).toString().toUpperCase();
+            SimpleDateFormat sdf = new SimpleDateFormat("EEE d", Locale.ENGLISH);
+            mDateStr = sdf.format(Calendar.getInstance().getTime()).toUpperCase();
         }
 
         private void updatePaintsForTheme(Theme theme) {
